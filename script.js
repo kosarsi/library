@@ -38,8 +38,15 @@ function displayBooks() {
         readButton.textContent = "";
         readButton.addEventListener('click', () => {
             library[i].toggleRead();
+            if (library[i].read) {
+                readButton.style.backgroundColor = "green";
+            } else {
+                readButton.style.backgroundColor = "white";
+            }
+        
             displayBooks(); 
         })
+        readButton.classList.add('readButton');
         const removeButton = document.createElement('button');
         removeButton.textContent = 'Remove';
         removeButton.addEventListener('click', () => removeBook(i));
@@ -59,9 +66,16 @@ function displayBooks() {
     }
 }
 
+function removeBook(index) {
+    library.splice(index, 1);
+    displayBooks();
+}
+
 addBook.addEventListener('click', () => {
     dialog.showModal();
 });
+
+addBookToLibrary('Harry Potter', 'J.K. Rowling', 100, true);
 
 submit.addEventListener('click', () => {
     event.preventDefault();
@@ -78,3 +92,5 @@ submit.addEventListener('click', () => {
 close.addEventListener('click', () => {
     dialog.close(); 
 })
+
+displayBooks();

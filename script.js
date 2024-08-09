@@ -1,5 +1,3 @@
-console.log('linked');
-
 const myLibrary = [];
 const domBooks = [];
 

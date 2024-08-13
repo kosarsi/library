@@ -1,16 +1,24 @@
 const myLibrary = [];
 const domBooks = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read; 
-}
-
 function addBook(title, author, pages, read) {
     const book = new Book(title, author, pages, read); 
     myLibrary.push(book); 
+}
+
+class Book {
+    
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read; 
+    }
+
+    toggleRead() {
+        this.read = !this.read; 
+    }
+    
 }
 
 let bookDisplay = document.getElementById('books');
@@ -38,7 +46,7 @@ function displayLibrary() {
         }
 
         toggleRead.addEventListener("click", function (e) {
-            book.read = !book.read; 
+            book.toggleRead(); 
             if (book.read) {
                 toggleRead.textContent = "Read";
                 toggleRead.style.backgroundColor = "#9FFF9C";

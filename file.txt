@@ -1,0 +1,12 @@
+import color_sensor
+import color
+import motor 
+from hub import port 
+
+while (color_sensor.reflection(port.A) is not color.BLACK) {
+    motor.run(port.B, 1000);
+    motor.run(port.C, 1000); 
+}
+
+motor.stop(port.B);
+motor.stop(port.C); 
